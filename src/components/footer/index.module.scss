@@ -1,5 +1,5 @@
 .Footer {
-  border-top: 2px solid orange;
+  border-top: 2px solid $primary;
   padding: 70px 0;
 
   .container {
@@ -7,8 +7,7 @@
     margin: auto;
 
     .row {
-      display: flex;
-      flex-wrap: wrap;
+      @include flex-container(row, auto, auto, 0, wrap);
 
       .col {
         width: 25%;
@@ -27,7 +26,7 @@
             bottom: -10px;
             height: 2px;
             width: 50px;
-            background-color: orangered;
+            background-color: $primary;
           }
         }
 
@@ -37,11 +36,11 @@
           li {
             margin-bottom: 10px;
             text-transform: capitalize;
-            color: #545454;
-            transition: all ease 0.35s;
+            color: $medium;
+            transition: all ease $timeFast;
 
             &:hover {
-              color: black;
+              color: $black;
               padding-left: 8px;
             }
           }
@@ -52,15 +51,15 @@
             padding: 10px;
             height: 40px;
             width: 40px;
-            color: rgb(30, 33, 48);
-            background-color: rgba(171, 171, 171, 0.5);
+            color: $dark;
+            background-color: $light;
             margin: 0 10px 10px 0;
             border-radius: 25%;
-            transition: all ease 0.35s;
+            transition: all ease $timeFast;
 
             &:hover {
-              background-color: rgb(30, 33, 48);
-              color: white;
+              background-color: $dark;
+              color: $white;
             }
           }
         }
@@ -69,7 +68,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: ($tablet - 1)) {
   .Footer {
     .container {
       .row {
