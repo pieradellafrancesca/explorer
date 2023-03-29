@@ -1,0 +1,15 @@
+.Card {
+  @include flex-container(column, center, center);
+  padding: 20px;
+  width: 280px;
+  height: 400px;
+  box-shadow: 0 0 4px $primary;
+  border-radius: 10px;
+  cursor: pointer;
+
+  .image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+}

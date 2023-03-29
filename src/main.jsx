@@ -1,9 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
+import MainLayout from "./layouts/mainLayout/MainLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Activity from "./pages/Activity";
-import City from "./pages/City";
+import Activities from "./pages/activities";
+import Activity from "./pages/activities/id";
+import City from "./pages/city/id";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -14,20 +16,20 @@ import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route element={<MainLayout />}>
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="activity" element={<Activity />}>
-        <Route path=":id" element={<h1>SPECIFIC ACTIVITY</h1>} />
-      </Route>
-      <Route path="city" element={<City />}>
-        <Route path=":id" element={<h1>SPECIFIC CITY</h1>} />
-      </Route>
+      <Route path="activities" element={<Activities />} />
+      <Route path="activities/:id" element={<Activity />} />
+      <Route path="city/:id" element={<City />} />
     </Route>
   )
 );
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const domNode = document.getElementById("root");
+const root = createRoot(domNode);
+
+root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>

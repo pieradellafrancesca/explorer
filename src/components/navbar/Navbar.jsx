@@ -20,12 +20,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className={styles.link} to="/activity">
-            Activity
+          <Link className={styles.link} to="/activities">
+            Activities
           </Link>
         </li>
         <li>
-          <Link className={styles.link} to="/city">
+          <Link className={styles.link} to="/city/:id">
             City
           </Link>
         </li>
