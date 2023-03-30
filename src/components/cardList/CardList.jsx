@@ -4,8 +4,8 @@ import styles from "./index.module.scss";
 const CardList = ({ data }) => {
   return (
     <div className={styles.CardList}>
-      {data.map((item) => (
-        <Card data={item} key={item.id} />
+      {data.map((item, index) => (
+        <Card data={item} i={index} key={index} />
       ))}
     </div>
   );

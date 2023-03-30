@@ -1,5 +1,5 @@
 .Card {
-  @include flex-container(column, center, center);
+  @include flex-container(column, space-between, center);
   padding: 20px;
   width: 280px;
   height: 400px;

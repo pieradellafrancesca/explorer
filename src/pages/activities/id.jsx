@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GET } from "../../utils/http";
+import { FiMapPin } from "react-icons/fi";
 import styles from "./id.module.scss";
 
 export default function Activity() {
@@ -10,25 +11,31 @@ export default function Activity() {
   const [activity, setActivity] = useState({});
 
   useEffect(() => {
-    GET(id || 1).then((data) => setActivity(data));
+    GET(`attractions?$filter=name%20eq%20%27${id}`).then((data) =>
+      setActivity(() => data.results[0])
+    );
   }, []);
 
   return (
     <div className={styles.Activity}>
-      {activity.id ? (
+      {console.log(activity)}
+      {activity.name ? (
         <>
-          <img
-            className={styles.image}
-            src={activity.image}
-            alt={activity.title}
-          />
+          <iframe
+            width="600"
+            height="450"
+            src={`https://maps.google.com/maps/?q=+${activity.geo.latitude}+,+${activity.geo.longitude}&output=embed`}
+          ></iframe>
           <div className={styles.text}>
+            <h1>{activity.name}</h1>
             <p>
-              <em>{activity.category}</em>
+              <FiMapPin /> <span>{activity.address.addressLocality}</span>,{" "}
+              <span>{activity.address.addressRegion}</span>
             </p>
-            <h1>{activity.title}</h1>
-            <p>{activity.description}</p>
-            <p>Price: $ {activity.price}</p>
+            <p>
+              <a href={activity.url}>{activity.url}</a>
+            </p>
+            <p>{activity.telephone}</p>
           </div>
         </>
       ) : (

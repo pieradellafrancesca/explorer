@@ -4,25 +4,25 @@ import CardList from "../../components/cardList";
 import styles from "../../styles/pages/Activities.module.scss";
 
 export default function Activities() {
-  const [itemList, setItemList] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    GET("").then((data) => setItemList(data));
+    GET("attractions").then((data) => setActivities(() => data.results));
   }, []);
 
-  const filteredList = (list, category) =>
-    list.filter((item) => item.category === category);
+  const filteredList = (list, type) =>
+    list.filter((item) => item["@type"].includes(type));
 
   return (
     <div className={styles.Activities}>
       <h1>Activities</h1>
       <section>
-        <h2>Women's clothing</h2>
-        <CardList data={filteredList(itemList, "women's clothing")} />
+        <h2>Museums</h2>
+        <CardList data={filteredList(activities, "Museum")} />
       </section>
       <section>
-        <h2>Electronics</h2>
-        <CardList data={filteredList(itemList, "electronics")} />
+        <h2>Sports Activity</h2>
+        <CardList data={filteredList(activities, "SportsActivityLocation")} />
       </section>
     </div>
   );
