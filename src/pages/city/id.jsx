@@ -6,19 +6,20 @@ import styles from "./id.module.scss";
 export default function City() {
   const { id } = useParams();
 
-  const [accomodation, setAccomodation] = useState({});
+  const [accommodation, setAccommodation] = useState({});
 
   useEffect(() => {
-    GET(`accomodation$filter=name%20eq%20%27'${id}'%27`).then((data) => {
-      setAccomodation(data.results[0]);
+    GET(`accommodation?$filter=name%20eq%20%27${id}%27`).then((data) => {
+      setAccommodation(() => data.results[0]);
     });
   }, []);
 
   return (
     <div className={styles.City}>
+      {console.log(accommodation)}
       <h1>{id}</h1>
-      <p>{accomodation.telephone}</p>
-      <p>{accomodation.name}</p>
+      <p>{accommodation.telephone}</p>
+      <p>{accommodation.name}</p>
     </div>
   );
 }

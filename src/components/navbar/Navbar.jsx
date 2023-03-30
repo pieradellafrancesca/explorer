@@ -15,7 +15,7 @@ const Navbar = () => {
   const onHandleSubmit = (event) => {
     event.preventDefault();
     navigate(`/city/${inputValue}`);
-    setInputValue(() => "");
+    // setInputValue(() => "");
   };
 
   return (
