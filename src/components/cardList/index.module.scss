@@ -1,5 +1,5 @@
 .CardList {
-  @include flex-container(row, center, center, 20px);
+  @include flex-container(row, flex-start, center, 20px);
   padding: 20px;
   overflow-x: auto;
 }

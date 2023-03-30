@@ -33,7 +33,9 @@ export default function Activity() {
               <span>{activity.address.addressRegion}</span>
             </p>
             <p>
-              <a href={activity.url}>{activity.url}</a>
+              <a href={activity.url} target="_blank">
+                {activity.url}
+              </a>
             </p>
             <p>{activity.telephone}</p>
           </div>
