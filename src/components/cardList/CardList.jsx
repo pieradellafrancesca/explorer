@@ -5,7 +5,7 @@ const CardList = ({ data }) => {
   return (
     <div className={styles.CardList}>
       {data.map((item, index) => (
-        <Card data={item} i={index} key={index} />
+        <Card data={item} i={Math.floor(Math.random() * 100)} key={index} />
       ))}
     </div>
   );

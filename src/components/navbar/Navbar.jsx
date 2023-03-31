@@ -8,6 +8,12 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
 
+  const [navbarVisibility, setNavbarVisibility] = useState(false);
+
+  const onHandleClick = () => {
+    setNavbarVisibility((prev) => !prev);
+  };
+
   const onHandleInput = (event) => {
     setInputValue(() => event.target.value);
   };
@@ -15,14 +21,17 @@ const Navbar = () => {
   const onHandleSubmit = (event) => {
     event.preventDefault();
     navigate(`/city/${inputValue}`);
-    // setInputValue(() => "");
+    setInputValue(() => "");
   };
 
   return (
     <div className={styles.Navbar}>
       <img className={styles.logo} src={appLogo} alt="logo image" />
-      <RxHamburgerMenu className={styles.mobileToggle} />
-      <ul className={styles.list}>
+      <RxHamburgerMenu
+        onClick={onHandleClick}
+        className={styles.mobileToggle}
+      />
+      <ul className={`${styles.list} ${navbarVisibility && styles.visible}`}>
         <li>
           <Link className={styles.link} to="/">
             Home

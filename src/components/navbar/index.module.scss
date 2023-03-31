@@ -1,5 +1,5 @@
 .Navbar {
-  @include flex-container(row, space-between, center, 20px);
+  @include flex-container(row, space-around, center, 20px);
   border-bottom: 2px solid $primary;
   padding: 30px 40px;
 
@@ -50,6 +50,12 @@
       background-color: hsla(0, 0%, 0%, 0.1);
       backdrop-filter: blur(1rem);
       z-index: 1;
+      transform: translateX(100%);
+      transition: transform $timeFast ease-in;
+    }
+
+    .visible {
+      transform: translateX(0%);
     }
 
     .mobileToggle {
@@ -57,7 +63,7 @@
       position: absolute;
       width: 36px;
       height: 36px;
-      top: 30px;
+      top: 36px;
       right: 30px;
       z-index: 9;
     }

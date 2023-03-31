@@ -1,0 +1,23 @@
+.About {
+  select {
+    padding: 3px 6px;
+    outline: none;
+    background-color: $light;
+    margin-right: 20px;
+  }
+
+  button {
+    padding: 6px 10px;
+    background-color: $medium;
+    color: $white;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all $timeFast;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}
